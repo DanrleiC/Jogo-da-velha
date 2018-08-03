@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>Joguito da Velhita</title>
+    <style type="text/css">
+    .casas{
+      width: 80px;
+      height: 80px;
+      background: #00CED1;
+      font-size: 60px;
+      color: #00000;
+    }
+  </style>
+
+  <body onload="resetar()">
+      <h1>Joguito da Velhita</h1>
+      <table style="background: #E0FFFF">
+        <tr>
+          <td align="center" id="11" class="casas" onclick="jogar(this.id)"></td>
+          <td align="center" id="12" class="casas" onclick="jogar(this.id)"></td>
+          <td align="center" id="13" class="casas" onclick="jogar(this.id)"></td>
+        </tr>
+        <tr>
+          <td align="center" id="21" class="casas" onclick="jogar(this.id)"></td>
+          <td align="center" id="22" class="casas" onclick="jogar(this.id)"></td>
+          <td align="center" id="23" class="casas" onclick="jogar(this.id)"></td>
+        </tr>
+        <tr>
+          <td align="center" id="31" class="casas" onclick="jogar(this.id)"></td>
+          <td align="center" id="32" class="casas" onclick="jogar(this.id)"></td>
+          <td align="center" id="33" class="casas" onclick="jogar(this.id)"></td>
+        </tr>
+      </table>
+      <br><input type="button" name="limpar" value="Jogar Novamente" onclick="resetar()">
+  </body>
+    <script>
+      jogador = "X";
+      var matriz = new Array();
+      function resetar(){
+          for (i=1; i<4; i++){
+             for (j=1; j<4; j++){
+                nomecasa = "" + i + j;
+                document.getElementById(nomecasa).innerHTML = "";
+                matriz["" + i + j] = "";
+            }
+         }
+      }
+      function jogar(casa){
+          jogada = document.getElementById(casa).innerHTML;
+         if (matriz[casa] != ""){
+            alert("Está casa já foi escolhida!!!");
+        }else{
+              if (jogador == "X"){
+                  jogador = "O";
+              }else{
+                  jogador = "X";
+              }
+              matriz[casa] = jogador;
+              document.getElementById(casa).innerHTML = matriz[casa];
+          checar();
+         }
+      }
+      function checar(){
+          if((matriz[11] == matriz[22]) && (matriz[11] == matriz[33]) && (matriz[11] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[31] == matriz[22]) && (matriz[31] == matriz[13]) && (matriz[31] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[11] == matriz[12]) && (matriz[11] == matriz[13]) && (matriz[11] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[21] == matriz[22]) && (matriz[21] == matriz[23]) && (matriz[21] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[31] == matriz[32]) && (matriz[31] == matriz[33]) && (matriz[31] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[11] == matriz[21]) && (matriz[11] == matriz[31]) && (matriz[11] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[12] == matriz[22]) && (matriz[12] == matriz[32]) && (matriz[12] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+          if((matriz[13] == matriz[23]) && (matriz[13] == matriz[33]) && (matriz[13] != "")){
+            alert("Bem jogado!");
+            resetar();
+          }
+      }
+    </script>
+  </head>
+</html>
